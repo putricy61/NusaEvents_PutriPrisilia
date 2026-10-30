@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import 'event_item.dart';
 
-/// Tipe peserta; menentukan faktor harga tiket.
 enum ParticipantType {
   mahasiswa('Mahasiswa', Icons.school_rounded, 0.5),
   dosen('Dosen', Icons.badge_rounded, 0.75),
@@ -15,7 +14,6 @@ enum ParticipantType {
   final double priceFactor;
 }
 
-/// Paket seminar kit.
 enum KitPackage {
   none('Tanpa Kit', 0, 'Tidak memesan seminar kit.'),
   regular('Reguler', 35000, 'Tas, notebook, dan pulpen.'),
@@ -32,7 +30,6 @@ enum KitPackage {
   final String description;
 }
 
-/// Tiket hasil pendaftaran seorang peserta pada satu seminar.
 class RegistrationTicket {
   const RegistrationTicket({
     required this.code,
@@ -60,17 +57,14 @@ class RegistrationTicket {
   final int donation;
   final DateTime createdAt;
 
-  /// Harga tiket setelah faktor tipe peserta.
   int get ticketPrice => priceFor(event, participantType);
 
-  /// Total yang dibayar: tiket + seminar kit + donasi.
   int get total => ticketPrice + kitPackage.price + donation;
 
   static int priceFor(EventItem event, ParticipantType type) {
     return (event.price * type.priceFactor).round();
   }
 
-  /// Kode tiket unik, contoh: NEH-AI01-LX3K9Q
   static String generateCode(EventItem event, DateTime now) {
     final suffix = now.millisecondsSinceEpoch
         .toRadixString(36)

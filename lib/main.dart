@@ -7,8 +7,6 @@ void main() {
   runApp(const NusaEventHubApp());
 }
 
-/// Tema: Quantum Blue (biru listrik pekat) dipadukan dengan Ice Glass
-/// (putih kebiruan beku dengan kartu semi-bening).
 class NusaEventHubApp extends StatelessWidget {
   const NusaEventHubApp({super.key});
 

@@ -2,14 +2,13 @@ import 'package:flutter/material.dart';
 
 import '../models/event_item.dart';
 
-/// Nilai filter yang dipakai di tab seminar.
+
 class EventFilter {
   const EventFilter({this.category, this.onlyAvailable = false});
 
-  /// null = semua kategori.
+
   final EventCategory? category;
 
-  /// Jika true, seminar dengan kuota penuh disembunyikan.
   final bool onlyAvailable;
 
   bool get isActive => category != null || onlyAvailable;
@@ -26,8 +25,6 @@ class EventFilter {
   }
 }
 
-/// Menampilkan bottom sheet filter. Mengembalikan filter baru bila
-/// pengguna menekan "Terapkan" atau "Reset", dan null bila ditutup.
 Future<EventFilter?> showFilterBottomSheet(
   BuildContext context,
   EventFilter current,

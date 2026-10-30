@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-/// Kategori seminar yang dipakai pada filter dan label kartu.
 enum EventCategory {
   ai('AI', Icons.psychology_alt_rounded, Color(0xFF6750A4)),
   mobile('Mobile', Icons.phone_android_rounded, Color(0xFF00796B)),
@@ -14,7 +13,6 @@ enum EventCategory {
   final Color color;
 }
 
-/// Data satu seminar / workshop.
 class EventItem {
   const EventItem({
     required this.id,
@@ -39,11 +37,9 @@ class EventItem {
   final DateTime endDate;
   final String time;
 
-  /// Nama ruangan; harus sama dengan label ruangan pada denah venue.
   final String room;
   final String description;
 
-  /// Harga dasar tiket dalam rupiah (0 = gratis).
   final int price;
   final int quota;
   final int registered;
@@ -93,12 +89,10 @@ const List<String> _namaBulan = [
   'Des',
 ];
 
-/// Contoh: 14 Nov 2026
 String formatTanggal(DateTime date) {
   return '${date.day} ${_namaBulan[date.month - 1]} ${date.year}';
 }
 
-/// Contoh: Rp 35.000
 String formatRupiah(int value) {
   final digits = value.abs().toString();
   final buffer = StringBuffer();

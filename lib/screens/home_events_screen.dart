@@ -11,7 +11,6 @@ import '../widgets/venue_map_viewer.dart';
 import 'event_registration_screen.dart';
 import 'registered_tickets_screen.dart';
 
-/// Layar utama dengan tiga tab: seminar, galeri & denah, dan tiket.
 class HomeEventsScreen extends StatefulWidget {
   const HomeEventsScreen({super.key});
 
@@ -23,8 +22,6 @@ class _HomeEventsScreenState extends State<HomeEventsScreen>
     with SingleTickerProviderStateMixin {
   late final TabController _tabController;
 
-  /// true saat denah venue tampil; swipe antar-tab dimatikan agar geseran
-  /// pada InteractiveViewer tidak berebut gestur dengan TabBarView.
   final ValueNotifier<bool> _mapActive = ValueNotifier<bool>(false);
 
   List<EventItem> _events = List<EventItem>.of(sampleEvents);
@@ -108,9 +105,6 @@ class _HomeEventsScreenState extends State<HomeEventsScreen>
     if (!mounted) return;
     _showTimedSnackBar(message: 'Tiket ${ticket.code} sudah aktif.');
   }
-
-  /// Pop-up konfirmasi pendaftaran berhasil (gaya sama dengan dialog
-  /// pembatalan tiket).
   Future<void> _showRegistrationSuccessDialog(RegistrationTicket ticket) {
     return showDialog<void>(
       context: context,
@@ -150,9 +144,6 @@ class _HomeEventsScreenState extends State<HomeEventsScreen>
     );
   }
 
-  /// SnackBar yang dijamin tertutup sendiri setelah [duration].
-  /// Flutter terbaru membuat SnackBar ber-action menetap tanpa batas
-  /// (persist), sehingga penutupan dipaksa lewat Timer.
   void _showTimedSnackBar({
     required String message,
     SnackBarAction? action,
@@ -238,7 +229,6 @@ class _HomeEventsScreenState extends State<HomeEventsScreen>
       ),
       body: DecoratedBox(
         decoration: BoxDecoration(
-          // Ice glass: gradasi putih-biru beku (mode terang saja).
           gradient: isDark
               ? null
               : const LinearGradient(
@@ -284,7 +274,6 @@ class _HomeEventsScreenState extends State<HomeEventsScreen>
     );
   }
 
-  /// Tab ringkas: ikon dan teks sejajar dalam satu baris.
   Tab _buildTab(IconData icon, String text, {int badge = 0}) {
     return Tab(
       height: 40,
@@ -336,9 +325,6 @@ class _SuccessLine extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Tab 1: Seminar & Workshop
-// ---------------------------------------------------------------------------
 
 class _SeminarTab extends StatelessWidget {
   const _SeminarTab({
@@ -489,9 +475,6 @@ class _EmptyFilterState extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Tab 2: Galeri & Denah Venue
-// ---------------------------------------------------------------------------
 
 enum _GalleryMode { poster, venue }
 
@@ -580,7 +563,6 @@ class _PosterGrid extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Tinggi sel mengikuti skala teks agar judul tidak overflow.
     final textScale =
         (MediaQuery.textScalerOf(context).scale(14) / 14).clamp(1.0, 2.0);
 
@@ -601,9 +583,6 @@ class _PosterGrid extends StatelessWidget {
   }
 }
 
-// ---------------------------------------------------------------------------
-// Detail seminar (bottom sheet)
-// ---------------------------------------------------------------------------
 
 class _EventDetailSheet extends StatelessWidget {
   const _EventDetailSheet({required this.event, required this.onRegister});

@@ -5,8 +5,6 @@ import '../models/event_item.dart';
 import '../models/registration_ticket.dart';
 import '../widgets/event_card.dart';
 
-/// Formulir pendaftaran tiket. Mengembalikan [RegistrationTicket] lewat
-/// Navigator.pop bila pendaftaran berhasil.
 class EventRegistrationScreen extends StatefulWidget {
   const EventRegistrationScreen({super.key, required this.event});
 
@@ -44,8 +42,6 @@ class _EventRegistrationScreenState extends State<EventRegistrationScreen> {
     super.dispose();
   }
 
-  // ----------------------------- Validator --------------------------------
-
   String? _validateName(String? value) {
     final text = value?.trim() ?? '';
     if (text.isEmpty) return 'Nama lengkap wajib diisi';
@@ -81,8 +77,6 @@ class _EventRegistrationScreenState extends State<EventRegistrationScreen> {
     }
     return null;
   }
-
-  // ------------------------------ Aksi ------------------------------------
 
   Future<void> _pickDate() async {
     FocusScope.of(context).unfocus();
@@ -120,7 +114,7 @@ class _EventRegistrationScreenState extends State<EventRegistrationScreen> {
     }
 
     setState(() => _submitting = true);
-    // Simulasi proses ke server.
+
     await Future<void>.delayed(const Duration(seconds: 2));
     if (!mounted) return;
 
@@ -155,8 +149,6 @@ class _EventRegistrationScreenState extends State<EventRegistrationScreen> {
       border: const OutlineInputBorder(),
     );
   }
-
-  // ------------------------------ Tampilan --------------------------------
 
   @override
   Widget build(BuildContext context) {

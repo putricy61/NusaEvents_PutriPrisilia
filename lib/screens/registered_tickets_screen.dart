@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 import '../models/event_item.dart';
 import '../models/registration_ticket.dart';
 
-/// Isi tab "Tiket Terdaftar": daftar tiket aktif dengan fitur pembatalan
-/// lewat geser (Dismissible) atau tombol, keduanya memakai AlertDialog.
 class RegisteredTicketsScreen extends StatelessWidget {
   const RegisteredTicketsScreen({
     super.key,

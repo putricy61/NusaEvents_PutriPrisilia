@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../models/event_item.dart';
 
-/// Satu ruangan pada denah. Posisi dan ukuran berupa pecahan (0..1)
-/// dari lebar/tinggi kanvas sehingga denah tetap proporsional di layar apa pun.
 class VenueRoom {
   const VenueRoom({
     required this.label,
@@ -105,7 +103,6 @@ const List<VenueRoom> venueRooms = [
   ),
 ];
 
-/// Denah venue yang dapat digeser dan diperbesar (InteractiveViewer).
 class VenueMapViewer extends StatefulWidget {
   const VenueMapViewer({super.key, required this.events, this.onEventTap});
 
@@ -133,7 +130,7 @@ class _VenueMapViewerState extends State<VenueMapViewer> {
   void _zoomBy(double factor, Size viewport) {
     final current = _controller.value.getMaxScaleOnAxis();
     final target = (current * factor).clamp(_minScale, _maxScale).toDouble();
-    // Skala terhadap titik tengah viewport.
+
     _controller.value = Matrix4.identity()
       ..setEntry(0, 0, target)
       ..setEntry(1, 1, target)

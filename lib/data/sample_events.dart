@@ -1,7 +1,5 @@
 import '../models/event_item.dart';
 
-/// Data contoh seminar. Nama `room` harus sama dengan label ruangan pada
-/// denah venue (lihat widgets/venue_map_viewer.dart).
 final List<EventItem> sampleEvents = [
   EventItem(
     id: 'ai-01',

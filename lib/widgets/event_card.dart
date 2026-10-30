@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../models/event_item.dart';
 
-/// Poster bergradasi berdasarkan warna kategori. Mengisi ruang induknya.
 class EventPoster extends StatelessWidget {
   const EventPoster({
     super.key,
@@ -34,7 +33,6 @@ class EventPoster extends StatelessWidget {
   }
 }
 
-/// Label kategori kecil (ikon + teks).
 class CategoryBadge extends StatelessWidget {
   const CategoryBadge({
     super.key,
@@ -44,7 +42,6 @@ class CategoryBadge extends StatelessWidget {
 
   final EventCategory category;
 
-  /// Jika true, memakai latar putih agar terbaca di atas poster.
   final bool onPoster;
 
   @override
@@ -79,7 +76,6 @@ class CategoryBadge extends StatelessWidget {
   }
 }
 
-/// Kartu seminar interaktif (InkWell) untuk daftar pada tab pertama.
 class EventCard extends StatelessWidget {
   const EventCard({super.key, required this.event, required this.onTap});
 
@@ -193,7 +189,6 @@ class EventCard extends StatelessWidget {
   }
 }
 
-/// Kartu poster untuk GridView pada tab galeri.
 class EventPosterTile extends StatelessWidget {
   const EventPosterTile({super.key, required this.event, required this.onTap});
 
